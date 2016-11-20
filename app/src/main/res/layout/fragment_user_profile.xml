@@ -1,0 +1,699 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_user_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    tools:context="com.simoncherry.faketantan.fragment.UserProfileFragment">
+
+
+    <FrameLayout
+        android:id="@+id/layout_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_other_profile_viewpager_height"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:visibility="visible"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/banner_viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"/>
+
+        <com.shizhefei.view.indicator.FixedIndicatorView
+            android:id="@+id/banner_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="12dp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginBottom="@dimen/activity_other_profile_indicator_margin_bottom"/>
+    </FrameLayout>
+
+    <com.simoncherry.faketantan.custom.ObservableScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout_global_title"
+        android:background="@android:color/transparent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/view_blank"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="@android:color/transparent"
+                android:visibility="visible"/>
+
+            <RelativeLayout
+                android:id="@+id/layout_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color1"
+                android:layout_below="@+id/view_blank">
+
+                <RelativeLayout
+                    android:id="@+id/layout_user_base"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tv_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color5"
+                        android:textSize="@dimen/type1"
+                        tools:text="Simon"/>
+
+                    <LinearLayout
+                        android:id="@+id/layout_age"
+                        android:layout_width="44dp"
+                        android:layout_height="20dp"
+                        android:orientation="horizontal"
+                        android:layout_below="@+id/tv_nickname"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_tv_age_male">
+
+                        <ImageView
+                            android:id="@+id/iv_sex"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:padding="5dp"
+                            tools:src="@drawable/ic_male"/>
+
+                        <TextView
+                            android:id="@+id/tv_age"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="@color/color1"
+                            android:textSize="@dimen/type4"
+                            tools:text="24"/>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_star"
+                        android:layout_width="44dp"
+                        android:layout_height="20dp"
+                        android:layout_alignTop="@+id/layout_age"
+                        android:layout_toRightOf="@+id/layout_age"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/bg_tv_star"
+                        android:gravity="center"
+                        android:textColor="@color/color1"
+                        android:textSize="@dimen/type5"
+                        tools:text="射手座"/>
+
+                    <TextView
+                        android:id="@+id/tv_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layout_age"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/color9"
+                        android:textSize="@dimen/type3"
+                        tools:text="0m，刚刚活跃"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_like_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_below="@+id/layout_user_base"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:visibility="visible">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color9"/>
+
+                    <ImageView
+                        android:id="@+id/iv_heart"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_favorite_outline_grey600_48dp"/>
+
+                    <TextView
+                        android:id="@+id/tv_like_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/iv_heart"
+                        android:layout_marginLeft="30dp"
+                        android:textColor="@color/color5"
+                        android:textSize="@dimen/type3"
+                        android:textStyle="bold"
+                        tools:text="45"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/tv_like_count"
+                        android:textColor="@color/color6"
+                        android:textSize="@dimen/type4"
+                        android:text="人喜欢了你"/>
+
+                    <TextView
+                        android:id="@+id/tv_flaunt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/type3"
+                        android:text="炫耀一下"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/color9"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_my_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_like_count"
+                    android:paddingLeft="20dp"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/tv_my_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/type3"
+                        android:text="我的信息"/>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_industry"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/tv_my_info"
+                        android:layout_marginTop="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_industry"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_briefcase"/>
+
+                        <TextView
+                            android:id="@+id/tv_industry"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iv_industry"
+                            android:layout_marginLeft="30dp"
+                            android:textColor="@color/color5"
+                            android:textSize="@dimen/type2"
+                            tools:text="IT/互联网/通信"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_job"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/layout_industry"
+                        android:layout_marginTop="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_job"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_briefcase"/>
+
+                        <TextView
+                            android:id="@+id/tv_job"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iv_job"
+                            android:layout_marginLeft="30dp"
+                            android:textColor="@color/color5"
+                            android:textSize="@dimen/type2"
+                            tools:text="工程师"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_company"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/layout_job"
+                        android:layout_marginTop="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_company"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_card"/>
+
+                        <TextView
+                            android:id="@+id/tv_company"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iv_company"
+                            android:layout_marginLeft="30dp"
+                            android:textColor="@color/color5"
+                            android:textSize="@dimen/type2"
+                            tools:text="xiaogongshi"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_from"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/layout_company"
+                        android:layout_marginTop="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_from"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_home"/>
+
+                        <TextView
+                            android:id="@+id/tv_from"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iv_from"
+                            android:layout_marginLeft="30dp"
+                            android:textColor="@color/color5"
+                            android:textSize="@dimen/type2"
+                            tools:text="广东"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_marker"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/layout_from"
+                        android:layout_marginTop="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_marker"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_marker"/>
+
+                        <TextView
+                            android:id="@+id/tv_marker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iv_marker"
+                            android:layout_marginLeft="30dp"
+                            android:textColor="@color/color5"
+                            android:textSize="@dimen/type2"
+                            tools:text="earth"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_sign"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/layout_marker"
+                        android:layout_marginTop="10dp">
+
+                        <ImageView
+                            android:id="@+id/iv_sign"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_sign"/>
+
+                        <TextView
+                            android:id="@+id/tv_sign"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iv_sign"
+                            android:layout_marginLeft="30dp"
+                            android:textColor="@color/color5"
+                            android:textSize="@dimen/type2"
+                            tools:text="lalala"/>
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/layout_sign"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/color9"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_my_tag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_my_info"
+                    android:paddingLeft="20dp">
+
+                    <TextView
+                        android:id="@+id/tv_my_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/type3"
+                        android:text="我的标签"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_my_tag"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:id="@+id/iv_tag"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/bg_ic_sign"
+                            android:gravity="center_horizontal"
+                            android:textColor="@color/color1"
+                            android:textSize="20sp"
+                            android:text="#"/>
+
+                        <co.lujun.androidtagview.TagContainerLayout
+                            android:id="@+id/layout_tag_sign"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/iv_tag"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="20dp"
+                            android:padding="10dp"
+                            app:container_background_color="@color/color1"
+                            app:container_border_color="@color/color1"
+                            app:container_enable_drag="false"
+                            app:horizontal_interval="10dp"
+                            app:vertical_interval="10dp"
+                            app:tag_clickable="false"
+                            app:tag_corner_radius="5dp"
+                            app:tag_theme="none"
+                            app:tag_border_color="@color/color_tag_bg_sign"
+                            app:tag_background_color="@color/color_tag_bg_sign"
+                            app:tag_text_color="@color/color_tag_tv_sign"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layout_my_interest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_my_tag"
+                    android:paddingLeft="20dp">
+
+                    <TextView
+                        android:id="@+id/tv_my_interest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/type3"
+                        android:text="我的兴趣"/>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_sport"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_my_interest"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="5dp">
+
+                        <ImageView
+                            android:id="@+id/iv_sport"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/profile_tag_ic_padding"
+                            android:background="@drawable/bg_ic_sport"
+                            android:src="@drawable/ic_dumbbell"/>
+
+                        <co.lujun.androidtagview.TagContainerLayout
+                            android:id="@+id/layout_tag_sport"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/iv_sport"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="20dp"
+                            android:padding="10dp"
+                            app:container_background_color="@color/color1"
+                            app:container_border_color="@color/color1"
+                            app:container_enable_drag="false"
+                            app:horizontal_interval="10dp"
+                            app:vertical_interval="10dp"
+                            app:tag_clickable="false"
+                            app:tag_corner_radius="5dp"
+                            app:tag_theme="none"
+                            app:tag_border_color="@color/color_tag_bg_sport"
+                            app:tag_background_color="@color/color_tag_bg_sport"
+                            app:tag_text_color="@color/color_tag_tv_sport" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_music"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layout_sport"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp">
+
+                        <ImageView
+                            android:id="@+id/iv_music"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/profile_tag_ic_padding"
+                            android:background="@drawable/bg_ic_music"
+                            android:src="@drawable/ic_musical_note"/>
+
+                        <co.lujun.androidtagview.TagContainerLayout
+                            android:id="@+id/layout_tag_music"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/iv_music"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="20dp"
+                            android:padding="10dp"
+                            app:container_background_color="@color/color1"
+                            app:container_border_color="@color/color1"
+                            app:container_enable_drag="false"
+                            app:horizontal_interval="10dp"
+                            app:vertical_interval="10dp"
+                            app:tag_clickable="false"
+                            app:tag_corner_radius="5dp"
+                            app:tag_theme="none"
+                            app:tag_border_color="@color/color_tag_bg_music"
+                            app:tag_background_color="@color/color_tag_bg_music"
+                            app:tag_text_color="@color/color_tag_tv_music" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_food"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layout_music"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp">
+
+                        <ImageView
+                            android:id="@+id/iv_food"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/profile_tag_ic_padding"
+                            android:background="@drawable/bg_ic_food"
+                            android:src="@drawable/ic_restaurant"/>
+
+                        <co.lujun.androidtagview.TagContainerLayout
+                            android:id="@+id/layout_tag_food"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/iv_food"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="20dp"
+                            android:padding="10dp"
+                            app:container_background_color="@color/color1"
+                            app:container_border_color="@color/color1"
+                            app:container_enable_drag="false"
+                            app:horizontal_interval="10dp"
+                            app:vertical_interval="10dp"
+                            app:tag_clickable="false"
+                            app:tag_corner_radius="5dp"
+                            app:tag_theme="none"
+                            app:tag_border_color="@color/color_tag_bg_food"
+                            app:tag_background_color="@color/color_tag_bg_food"
+                            app:tag_text_color="@color/color_tag_tv_food" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_movie"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layout_food"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp">
+
+                        <ImageView
+                            android:id="@+id/iv_movie"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/profile_tag_ic_padding"
+                            android:background="@drawable/bg_ic_movie"
+                            android:src="@drawable/ic_tv"/>
+
+                        <co.lujun.androidtagview.TagContainerLayout
+                            android:id="@+id/layout_tag_movie"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/iv_movie"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="20dp"
+                            android:padding="10dp"
+                            app:container_background_color="@color/color1"
+                            app:container_border_color="@color/color1"
+                            app:container_enable_drag="false"
+                            app:horizontal_interval="10dp"
+                            app:vertical_interval="10dp"
+                            app:tag_clickable="false"
+                            app:tag_corner_radius="5dp"
+                            app:tag_theme="none"
+                            app:tag_border_color="@color/color_tag_bg_movie"
+                            app:tag_background_color="@color/color_tag_bg_movie"
+                            app:tag_text_color="@color/color_tag_tv_movie" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_book"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layout_movie"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp" >
+
+                        <ImageView
+                            android:id="@+id/iv_book"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/profile_tag_ic_padding"
+                            android:background="@drawable/bg_ic_book"
+                            android:src="@drawable/ic_literature"/>
+
+                        <co.lujun.androidtagview.TagContainerLayout
+                            android:id="@+id/layout_tag_book"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/iv_book"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="20dp"
+                            android:padding="10dp"
+                            app:container_background_color="@color/color1"
+                            app:container_border_color="@color/color1"
+                            app:container_enable_drag="false"
+                            app:horizontal_interval="10dp"
+                            app:vertical_interval="10dp"
+                            app:tag_clickable="false"
+                            app:tag_corner_radius="5dp"
+                            app:tag_theme="none"
+                            app:tag_border_color="@color/color_tag_bg_book"
+                            app:tag_background_color="@color/color_tag_bg_book"
+                            app:tag_text_color="@color/color_tag_tv_book" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_travel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/layout_book"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:visibility="visible" >
+
+                        <ImageView
+                            android:id="@+id/iv_travel"
+                            android:layout_width="@dimen/profile_tag_ic_width"
+                            android:layout_height="@dimen/profile_tag_ic_width"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/profile_tag_ic_padding"
+                            android:background="@drawable/bg_ic_travel"
+                            android:src="@drawable/ic_airplane"/>
+
+                        <co.lujun.androidtagview.TagContainerLayout
+                            android:id="@+id/layout_tag_travel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@id/iv_travel"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginRight="20dp"
+                            android:padding="10dp"
+                            app:container_background_color="@color/color1"
+                            app:container_border_color="@color/color1"
+                            app:container_enable_drag="false"
+                            app:horizontal_interval="10dp"
+                            app:vertical_interval="10dp"
+                            app:tag_clickable="false"
+                            app:tag_corner_radius="5dp"
+                            app:tag_theme="none"
+                            app:tag_border_color="@color/color_tag_bg_travel"
+                            app:tag_background_color="@color/color_tag_bg_travel"
+                            app:tag_text_color="@color/color_tag_tv_travel" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/layout_travel"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </com.simoncherry.faketantan.custom.ObservableScrollView>
+
+</RelativeLayout>

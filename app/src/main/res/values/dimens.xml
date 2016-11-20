@@ -1,0 +1,54 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="slidingmenu_offset_left">75dp</dimen>
+    <dimen name="slidingmenu_offset_right">75dp</dimen>
+
+    <dimen name="slidingmenu_left_height">60dp</dimen>
+    <dimen name="slidingmenu_left_text">20sp</dimen>
+    <dimen name="slidingmenu_left_padding">18sp</dimen>
+
+
+    <!--activity_other_profile-->
+    <dimen name="activity_other_profile_viewpager_height">400dp</dimen>
+    <dimen name="activity_other_profile_viewpager_margin_top">17dp</dimen>
+    <dimen name="activity_other_profile_indicator_margin_bottom">25dp</dimen>
+    <dimen name="activity_other_profile_main_btn_width">258dp</dimen>
+    <dimen name="activity_other_profile_main_btn_height">35dp</dimen>
+    <dimen name="activity_other_profile_main_btn_margin_top">29dp</dimen>
+    <dimen name="activity_other_profile_main_btn_margin_bottom">39dp</dimen>
+
+    <!--item_user_profile_adapter-->
+    <dimen name="item_user_profile_margin_top">17dp</dimen>
+    <dimen name="item_user_profile_grid_space">4dp</dimen>
+    <dimen name="item_user_profile_option_margin_top">17dp</dimen>
+    <dimen name="item_user_profile_option_margin_left">20dp</dimen>
+    <dimen name="item_user_profile_text_margin_left">100dp</dimen>
+    <dimen name="item_user_profile_text_margin_right">20dp</dimen>
+    <!--<dimen name="item_user_profile_text_height">28dp</dimen>-->
+    <dimen name="item_user_profile_text_height">35dp</dimen>
+    <dimen name="item_user_profile_text_width">28dp</dimen>
+    <dimen name="item_user_profile_edt_width">240dp</dimen>
+
+
+    <dimen name="profile_tag_ic_width">24dp</dimen>
+    <dimen name="profile_tag_ic_padding">4dp</dimen>
+    <dimen name="profile_tag_ic_radius">6dp</dimen>
+    <dimen name="profile_ic_margin_right">30dp</dimen>
+    <dimen name="profile_plus_margin_right">10dp</dimen>
+
+
+    <!--字号-->
+    <dimen name="type1">18sp</dimen>
+    <dimen name="type2">15sp</dimen>
+    <dimen name="type3">14sp</dimen>
+    <dimen name="type4">13sp</dimen>
+    <dimen name="type5">12sp</dimen>
+    <dimen name="type6">11sp</dimen>
+    <dimen name="type7">9sp</dimen>
+    <dimen name="type8">16sp</dimen>
+    <dimen name="type9">10sp</dimen>
+    <dimen name="type10">17sp</dimen>
+</resources>

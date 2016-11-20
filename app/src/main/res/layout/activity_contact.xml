@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_contact"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    tools:context="com.simoncherry.faketantan.activity.ContactActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color1">
+
+        <include
+            android:id="@+id/layout_global_title"
+            layout="@layout/sliding_menu_main_title"
+            android:focusable="true"/>
+
+        <ListView
+            android:id="@+id/lv_contact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_global_title"
+            android:layout_toLeftOf="@+id/alpha_bar"
+            android:scrollbars="none"
+            android:dividerHeight="0dp"
+            android:divider="@color/color1"
+            android:cacheColorHint="@color/color1"/>
+
+        <com.simoncherry.faketantan.custom.QuickAlphabeticBar
+            android:id="@+id/alpha_bar"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_global_title"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="80dp"
+            android:layout_alignParentRight="true"/>
+
+        <TextView
+            android:id="@+id/fast_position"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_toLeftOf="@+id/alpha_bar"
+            android:layout_alignTop="@+id/lv_contact"
+            android:layout_gravity="center_horizontal|top"
+            android:gravity="center"
+            android:padding="2dip"
+            android:background="@drawable/bg_alpha"
+            android:textColor="@color/color1"
+            android:textSize="48sp"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context="com.simoncherry.faketantan.activity.MainActivity">
+
+    <include
+        android:id="@+id/layout_global_title"
+        layout="@layout/sliding_menu_main_title"
+        android:focusable="true"/>
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout_global_title"/>
+
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/layout_test"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/layout_global_title"-->
+        <!--android:background="@color/color2"-->
+        <!--android:visibility="gone">-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:background="@color/color7">-->
+
+            <!--<Button-->
+                <!--android:id="@+id/btn_test"-->
+                <!--android:layout_width="258dp"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:text="BOOM"/>-->
+
+        <!--</RelativeLayout>-->
+
+    <!--</RelativeLayout>-->
+
+</RelativeLayout>

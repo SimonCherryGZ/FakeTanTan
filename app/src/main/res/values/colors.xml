@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+    <color name="colorPrimary">#d34730</color>
+    <color name="colorPrimaryDark">#660000</color>
+    <color name="colorAccent">#FF6666</color>
+
+    <color name="colorFoxRed">#FF4040</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="title_bar">#d34530</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="menu_left_tv">#444444</color>
+    <color name="backcolor">#f2f2f2</color>
+
+    <!--add by simon at 2016/07/27-->
+    <color name="color0">#00000000</color>
+    <color name="color1">#FFFFFF</color>
+    <color name="color2">#88ceff</color>
+    <color name="color3">#e9eaee</color>
+    <color name="color4">#303030</color>
+    <color name="color5">#181818</color>
+    <color name="color6">#505050</color>
+    <color name="color7">#ff7f94</color>
+    <color name="color8">#62b900</color>
+    <color name="color9">#a2a2a2</color>
+
+    <color name="color_tag_bg_male">#7bbbf9</color>
+    <color name="color_tag_bg_female">#ff7f94</color>
+    <color name="color_tag_bg_star">#384392</color>
+    <color name="color_tag_ic_sign">#3a5570</color>
+    <color name="color_tag_bg_sign">#8f9faf</color>
+    <color name="color_tag_tv_sign">#3e4f61</color>
+    <color name="color_tag_ic_sport">#02a346</color>
+    <color name="color_tag_bg_sport">#cbeada</color>
+    <color name="color_tag_tv_sport">#084a26</color>
+    <color name="color_tag_ic_music">#004bd5</color>
+    <color name="color_tag_bg_music">#b4c2dd</color>
+    <color name="color_tag_tv_music">#3b4875</color>
+    <color name="color_tag_ic_food">#d17455</color>
+    <color name="color_tag_bg_food">#f5b1a6</color>
+    <color name="color_tag_tv_food">#a02a28</color>
+    <color name="color_tag_ic_movie">#64638d</color>
+    <color name="color_tag_bg_movie">#cacae2</color>
+    <color name="color_tag_tv_movie">#555675</color>
+    <color name="color_tag_ic_book">#e1b33b</color>
+    <color name="color_tag_bg_book">#fdefc0</color>
+    <color name="color_tag_tv_book">#91752b</color>
+    <color name="color_tag_ic_travel">#79b3db</color>
+    <color name="color_tag_bg_travel">#d5dee5</color>
+    <color name="color_tag_tv_travel">#436070</color>
+    
+    <color name="color_tutorial_menu">#80e0e0e0</color>
+    <color name="color_tv_gray">#909090</color>
+    <color name="color_tv_black">#1c1c1c</color>
+
+</resources>

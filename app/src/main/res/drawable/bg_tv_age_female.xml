@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid
+        android:color="@color/color_tag_bg_female"/>
+    <size
+        android:width="@dimen/profile_tag_ic_width"
+        android:height="@dimen/profile_tag_ic_width" />
+    <corners
+        android:radius="@dimen/profile_tag_ic_radius"/>
+</shape>

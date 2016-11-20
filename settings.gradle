@@ -1,0 +1,2 @@
+include ':app', ':sidemenu', ':cardview', ':androidtagview', ':mediachooserlibrary'
+project(':mediachooserlibrary').projectDir = new File('MediaChooser-library/app')

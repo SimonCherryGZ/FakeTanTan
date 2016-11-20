@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_account"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color1"
+    android:fitsSystemWindows="true"
+    tools:context="com.simoncherry.faketantan.activity.AccountActivity">
+
+    <include
+        android:id="@+id/layout_global_title"
+        layout="@layout/sliding_menu_main_title"
+        android:focusable="true"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_option"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_global_title">
+
+        <RelativeLayout
+            android:id="@+id/layout_sex"
+            style="@style/account_layout_styles">
+
+            <TextView
+                android:id="@+id/tv_title_sex"
+                style="@style/account_tv_title_styles"
+                android:text="性别"/>
+
+            <TextView
+                android:id="@+id/tv_content_sex"
+                style="@style/account_tv_content_styles"
+                android:layout_below="@+id/tv_title_sex"
+                android:text="男"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_nickname"
+            style="@style/account_layout_styles"
+            android:layout_below="@+id/layout_sex">
+
+            <TextView
+                android:id="@+id/tv_title_nickname"
+                style="@style/account_tv_title_styles"
+                android:text="姓名"/>
+
+            <TextView
+                android:id="@+id/tv_content_nickname"
+                style="@style/account_tv_content_styles"
+                android:layout_below="@+id/tv_title_nickname"
+                tools:text="Simon"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_birthday"
+            style="@style/account_layout_styles"
+            android:layout_below="@+id/layout_nickname">
+
+            <TextView
+                android:id="@+id/tv_title_birthday"
+                style="@style/account_tv_title_styles"
+                android:text="生日"/>
+
+            <TextView
+                android:id="@+id/tv_content_birthday"
+                style="@style/account_tv_content_styles"
+                android:layout_below="@+id/tv_title_birthday"
+                tools:text="91/12/21"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_phone"
+            style="@style/account_layout_styles"
+            android:layout_below="@+id/layout_birthday">
+
+            <TextView
+                android:id="@+id/tv_title_phone"
+                style="@style/account_tv_title_styles"
+                android:text="手机号码"/>
+
+            <TextView
+                android:id="@+id/tv_content_phone"
+                style="@style/account_tv_content_styles"
+                android:layout_below="@+id/tv_title_phone"
+                tools:text="+86 13719273131"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/layout_password"
+            style="@style/account_layout_styles"
+            android:layout_below="@+id/layout_phone">
+
+            <TextView
+                android:id="@+id/tv_title_password"
+                style="@style/account_tv_title_styles"
+                android:text="修改密码"/>
+
+            <TextView
+                android:id="@+id/tv_content_password"
+                style="@style/account_tv_content_styles"
+                android:layout_below="@+id/tv_title_password"
+                android:text="******"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/layout_option"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/color6"
+        android:text="删除当前账户"/>
+
+</RelativeLayout>

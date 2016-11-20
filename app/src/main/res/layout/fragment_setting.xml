@@ -1,0 +1,342 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.simoncherry.faketantan.fragment.SettingFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/type2"
+                android:text="向我显示"/>
+
+            <RelativeLayout
+                android:id="@+id/layout_show_sex"
+                style="@style/setting_layout_styles"
+                android:layout_below="@+id/tv_show">
+
+                <TextView
+                    android:id="@+id/tv_title_sex"
+                    style="@style/setting_tv_title_styles"
+                    android:text="显示性别"/>
+
+                <TextView
+                    android:id="@+id/tv_content_sex"
+                    style="@style/setting_tv_content_styles"
+                    android:layout_below="@+id/tv_title_sex"
+                    android:text="女生"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_show_age"
+                style="@style/setting_layout_styles"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/layout_show_sex">
+
+                <TextView
+                    android:id="@+id/tv_title_age"
+                    style="@style/setting_tv_title_styles"
+                    android:text="年龄"/>
+
+                <TextView
+                    android:id="@+id/tv_content_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/type2"
+                    android:text="18 - 50+"/>
+
+                <ImageView
+                    android:id="@+id/iv_young"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/tv_title_age"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/ic_young"/>
+
+                <ImageView
+                    android:id="@+id/iv_old"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignTop="@+id/iv_young"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_old"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_content_age"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/iv_young"
+                    android:layout_toLeftOf="@+id/iv_old"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="30dp">
+
+                    <com.appyvet.rangebar.RangeBar
+                        xmlns:custom="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/range_bar_age"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        custom:rangeBarColor="@color/white"
+                        custom:tickColor="@color/colorPrimary"
+                        custom:tickHeight="0sp"
+                        custom:pinColor="@color/colorPrimary"
+                        custom:connectingLineColor="@color/colorPrimary"
+                        custom:selectorColor="@color/colorPrimary"
+                        custom:tickStart="18"
+                        custom:tickInterval="1"
+                        custom:tickEnd="50" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_show_distance"
+                style="@style/setting_layout_styles"
+                android:layout_below="@+id/layout_show_age">
+
+                <TextView
+                    android:id="@+id/tv_title_distance"
+                    style="@style/setting_tv_title_styles"
+                    android:text="年龄"/>
+
+                <TextView
+                    android:id="@+id/tv_content_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/type2"
+                    android:text="100km+"/>
+
+                <ImageView
+                    android:id="@+id/iv_near"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/tv_title_distance"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/ic_near"/>
+
+                <ImageView
+                    android:id="@+id/iv_far"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignTop="@+id/iv_near"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_far"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_content_distance"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/iv_near"
+                    android:layout_toLeftOf="@+id/iv_far"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="30dp">
+
+                    <com.appyvet.rangebar.RangeBar
+                        xmlns:custom="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/range_bar_distance"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        custom:rangeBarColor="@color/white"
+                        custom:tickColor="@color/colorPrimary"
+                        custom:tickHeight="0sp"
+                        custom:pinColor="@color/colorPrimary"
+                        custom:connectingLineColor="@color/colorPrimary"
+                        custom:selectorColor="@color/colorPrimary"
+                        custom:tickStart="1"
+                        custom:tickInterval="1"
+                        custom:tickEnd="100"
+                        custom:rangeBar="false"/>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_divider_1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/layout_show_distance"
+                android:background="@color/color6" />
+
+            <TextView
+                android:id="@+id/tv_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_divider_1"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/type2"
+                android:text="应用设置"/>
+
+            <RelativeLayout
+                android:id="@+id/layout_account"
+                style="@style/setting_layout_styles"
+                android:layout_below="@+id/tv_setting">
+
+                <ImageView
+                    android:id="@+id/iv_account"
+                    style="@style/setting_ic_styles"
+                    android:src="@drawable/ic_profile"/>
+
+                <TextView
+                    android:id="@+id/tv_title_account"
+                    style="@style/setting_tv_title_styles"
+                    android:layout_toRightOf="@+id/iv_account"
+                    android:text="账户信息"/>
+
+                <TextView
+                    android:id="@+id/tv_content_account"
+                    style="@style/setting_tv_content_styles"
+                    android:layout_below="@+id/tv_title_account"
+                    android:layout_alignLeft="@+id/tv_title_account"
+                    android:text="编辑电话，姓名等"/>
+
+                <ImageView
+                    style="@style/setting_ic_jump"
+                    android:src="@drawable/ic_jump"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_privacy"
+                style="@style/setting_layout_styles"
+                android:layout_below="@+id/layout_account">
+
+                <ImageView
+                    android:id="@+id/iv_privacy"
+                    style="@style/setting_ic_styles"
+                    android:src="@drawable/ic_privacy"/>
+
+                <TextView
+                    android:id="@+id/tv_title_privacy"
+                    style="@style/setting_tv_title_styles"
+                    android:layout_toRightOf="@+id/iv_privacy"
+                    android:text="隐私和通知"/>
+
+                <TextView
+                    android:id="@+id/tv_content_privacy"
+                    style="@style/setting_tv_content_styles"
+                    android:layout_below="@+id/tv_title_privacy"
+                    android:layout_alignLeft="@+id/tv_title_privacy"
+                    android:text="联系人、朋友圈和通知设置"/>
+
+                <ImageView
+                    style="@style/setting_ic_jump"
+                    android:src="@drawable/ic_jump"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_data"
+                style="@style/setting_layout_styles"
+                android:layout_below="@+id/layout_privacy">
+
+                <ImageView
+                    android:id="@+id/iv_data"
+                    style="@style/setting_ic_styles"
+                    android:src="@drawable/ic_setting"/>
+
+                <TextView
+                    android:id="@+id/tv_title_data"
+                    style="@style/setting_tv_title_styles"
+                    android:layout_toRightOf="@+id/iv_data"
+                    android:text="数据和缓存"/>
+
+                <TextView
+                    android:id="@+id/tv_content_data"
+                    style="@style/setting_tv_content_styles"
+                    android:layout_below="@+id/tv_title_data"
+                    android:layout_alignLeft="@+id/tv_title_data"
+                    android:text="数据和缓存设置"/>
+
+                <ImageView
+                    style="@style/setting_ic_jump"
+                    android:src="@drawable/ic_jump"/>
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view_divider_2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/layout_data"
+                android:background="@color/color6" />
+
+            <RelativeLayout
+                android:id="@+id/layout_report"
+                style="@style/setting_layout_styles"
+                android:layout_below="@+id/view_divider_2">
+
+                <ImageView
+                    android:id="@+id/iv_report"
+                    style="@style/setting_ic_styles"
+                    android:src="@drawable/ic_report"/>
+
+                <TextView
+                    android:id="@+id/tv_title_report"
+                    style="@style/setting_tv_title_styles"
+                    android:layout_toRightOf="@+id/iv_report"
+                    android:text="意见反馈"/>
+
+                <TextView
+                    android:id="@+id/tv_content_report"
+                    style="@style/setting_tv_content_styles"
+                    android:layout_below="@+id/tv_title_report"
+                    android:layout_alignLeft="@+id/tv_title_report"
+                    android:text="感谢你提出对瘫瘫的奇葩意见"/>
+
+                <ImageView
+                    style="@style/setting_ic_jump"
+                    android:src="@drawable/ic_jump"/>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_quit"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/layout_report"
+                android:layout_marginTop="40dp"
+                android:textColor="@color/color6"
+                android:textSize="@dimen/type1"
+                android:text="退出登录"/>
+
+            <TextView
+                android:id="@+id/tv_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/btn_quit"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="瘫瘫 2.5.1.2"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/tv_version"/>
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

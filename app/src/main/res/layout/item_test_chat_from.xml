@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:descendantFocusability="blocksDescendants"
+    android:background="@android:color/transparent"
+    tools:background="@color/color2">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/iv_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignBottom="@+id/tv_content"
+        android:src="@drawable/fox"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/color1"/>
+
+    <io.github.rockerhieu.emojicon.EmojiconTextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="240dp"
+        android:layout_toRightOf="@+id/iv_avatar"
+        android:layout_marginLeft="4dp"
+        android:background="@drawable/bg_chatfrom"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/color_tv_black"
+        android:textSize="@dimen/type2"
+        android:text="what the fuck what the fuck what the fuck what the fuck what the fuck what the fuck" />
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="240dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_alignLeft="@+id/tv_content"-->
+        <!--android:layout_below="@+id/tv_content"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:padding="10dp"-->
+        <!--android:background="@color/color_tutorial_menu">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_tutorial_1"-->
+            <!--style="@style/tutorial_menu_styles"-->
+            <!--android:text="1.瘫瘫怎么玩、怎么聊天？"/>-->
+
+        <!--<View-->
+           <!--style="@style/tutorial_placeholder_styles" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_tutorial_2"-->
+            <!--style="@style/tutorial_menu_styles"-->
+            <!--android:text="2.怎么看谁喜欢我？"/>-->
+
+        <!--<View-->
+            <!--style="@style/tutorial_placeholder_styles" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_tutorial_3"-->
+            <!--style="@style/tutorial_menu_styles"-->
+            <!--android:text="3.有些功能我找不到"/>-->
+
+        <!--<View-->
+            <!--style="@style/tutorial_placeholder_styles" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_tutorial_4"-->
+            <!--style="@style/tutorial_menu_styles"-->
+            <!--android:text="4.我不小心滑错了，怎么办"/>-->
+
+        <!--<View-->
+            <!--style="@style/tutorial_placeholder_styles" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_tutorial_5"-->
+            <!--style="@style/tutorial_menu_styles"-->
+            <!--android:text="5.更多问题"/>-->
+
+        <!--<View-->
+            <!--style="@style/tutorial_placeholder_styles" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_tutorial_6"-->
+            <!--style="@style/tutorial_menu_styles"-->
+            <!--android:text="6.账号异常"/>-->
+    <!--</LinearLayout>-->
+    <com.simoncherry.faketantan.custom.DynamicListView
+        android:id="@+id/lv_tutorial"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        tools:layout_height="300dp"
+        android:layout_alignLeft="@+id/tv_content"
+        android:layout_below="@+id/tv_content"
+        android:layout_marginTop="5dp"
+        android:padding="10dp"
+        android:background="@color/color_tutorial_menu"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"
+        android:scrollbars="none">
+    </com.simoncherry.faketantan.custom.DynamicListView>
+
+</RelativeLayout>

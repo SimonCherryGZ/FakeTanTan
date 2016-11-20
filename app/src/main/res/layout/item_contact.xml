@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color1"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <View
+        android:id="@+id/view_divider_1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#a2a2a2"
+        android:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/tv_alpha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view_divider_1"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/type2"
+        tools:text="L"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/iv_select"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tv_alpha"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/ic_favorite_outline_grey600_48dp"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_alpha"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@+id/iv_select"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/color5"
+        android:textSize="@dimen/type2"
+        tools:text="李老板"/>
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_alpha"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="40dp"
+        android:textColor="@color/color5"
+        android:textSize="@dimen/type2"
+        tools:text="13719273131"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tv_name"
+        android:background="@color/color1"/>
+
+</RelativeLayout>
