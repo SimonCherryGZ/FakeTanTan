@@ -184,7 +184,7 @@ public class AccountActivity extends AppCompatActivity implements DatePickerDial
             case R.id.layout_sex:
                 int preselect = 0;
                 String sex = userData.getSex();
-                if (sex.equals("女")) {
+                if (sex != null && sex.equals("女")) {
                     preselect = 1;
                 }
                 showSingleSelectDialog("性别", R.array.sex_select, preselect, new MaterialDialog.ListCallbackSingleChoice() {

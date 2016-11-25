@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.simoncherry.faketantan.R;
-import com.simoncherry.faketantan.activity.ChatActivity;
 import com.simoncherry.faketantan.activity.MainActivity;
+import com.simoncherry.faketantan.activity.RobotActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -33,7 +33,8 @@ public class RightTwoFragment extends Fragment {
         tvRightPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                //Intent intent = new Intent(getActivity(), ChatActivity.class);
+                Intent intent = new Intent(getActivity(), RobotActivity.class);
                 startActivity(intent);
             }
         });

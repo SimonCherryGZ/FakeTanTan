@@ -17,7 +17,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:name, android:icon, android:theme, android:label">
-
         <activity android:name=".activity.MainActivity">
 
             <!-- <intent-filter> -->
@@ -44,7 +43,8 @@
         <activity android:name=".activity.ChatActivity" />
         <activity
             android:name="com.learnncode.mediachooser.activity.HomeScreenMediaChooser"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.RobotActivity"></activity>
     </application>
 
 </manifest>
