@@ -12,6 +12,8 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.simoncherry.faketantan.sp.JsonConverterFactory;
 
+import io.realm.Realm;
+
 /**
  * Created by zhouweilong on 16/5/28.
  */
@@ -22,6 +24,7 @@ public class MyApplication extends Application {
         super.onCreate();
         initImageLoader();
         Treasure.setConverterFactory(new JsonConverterFactory());
+        Realm.init(this);
     }
 
     private void initImageLoader() {

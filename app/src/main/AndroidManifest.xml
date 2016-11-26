@@ -41,10 +41,11 @@
         <activity android:name=".activity.EditProfileActivity" />
         <activity android:name=".activity.AccountActivity" />
         <activity android:name=".activity.ChatActivity" />
+        <activity android:name=".activity.RobotActivity" />
+        <activity android:name=".activity.RobotNewActivity" />
         <activity
             android:name="com.learnncode.mediachooser.activity.HomeScreenMediaChooser"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.RobotActivity"></activity>
     </application>
 
 </manifest>

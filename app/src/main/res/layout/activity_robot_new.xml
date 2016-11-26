@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_chat_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color1"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.simoncherry.faketantan.activity.RobotActivity">
+
+    <include
+        android:id="@+id/chat_bar"
+        layout="@layout/toolbar_chat" />
+
+    <in.srain.cube.views.ptr.PtrClassicFrameLayout
+        android:id="@+id/ptr_frame"
+        xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        cube_ptr:ptr_resistance="1.7"
+        cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+        cube_ptr:ptr_duration_to_close="300"
+        cube_ptr:ptr_duration_to_close_header="2000"
+        cube_ptr:ptr_keep_header_when_refresh="true"
+        cube_ptr:ptr_pull_to_fresh="false" >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_chat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </android.support.v7.widget.RecyclerView>
+    </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+
+    <include
+        android:id="@+id/chat_input"
+        layout="@layout/layout_chat_input" />
+
+    <cn.dreamtobe.kpswitch.widget.KPSwitchPanelFrameLayout
+        android:id="@+id/layout_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color1"
+        android:visibility="gone">
+
+        <include
+            android:id="@+id/layout_menu"
+            layout="@layout/layout_expand_menu" />
+
+        <FrameLayout
+            android:id="@+id/layout_emoji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fdfdf8"
+            android:visibility="gone"/>
+    </cn.dreamtobe.kpswitch.widget.KPSwitchPanelFrameLayout>
+
+</cn.dreamtobe.kpswitch.widget.KPSwitchRootLinearLayout>

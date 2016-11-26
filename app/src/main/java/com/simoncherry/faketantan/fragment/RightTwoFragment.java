@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.simoncherry.faketantan.R;
 import com.simoncherry.faketantan.activity.MainActivity;
-import com.simoncherry.faketantan.activity.RobotActivity;
+import com.simoncherry.faketantan.activity.RobotNewActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +34,7 @@ public class RightTwoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Intent intent = new Intent(getActivity(), ChatActivity.class);
-                Intent intent = new Intent(getActivity(), RobotActivity.class);
+                Intent intent = new Intent(getActivity(), RobotNewActivity.class);
                 startActivity(intent);
             }
         });
