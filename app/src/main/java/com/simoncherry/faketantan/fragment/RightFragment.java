@@ -107,8 +107,8 @@ public class RightFragment extends Fragment{
 		layoutRoot = (LinearLayout) view.findViewById(R.id.layout_root);
 		mItemTab=(NavigationTabStrip)view.findViewById(R.id.menu_right_tab);
 		mViewpager=(ViewPager)view.findViewById(R.id.menu_right_viewpager);
-		RightOneFragment mOneFragment=new RightOneFragment();
-		RightTwoFragment mTwoFragment=new RightTwoFragment();
+		RightMatchFragment mOneFragment=new RightMatchFragment();
+		RightChatFragment mTwoFragment=new RightChatFragment();
 		mFragments.add(mOneFragment);
 		mFragments.add(mTwoFragment);
 		adapter=new MyFragmentPagerAdapter(getActivity().getSupportFragmentManager(),mFragments);

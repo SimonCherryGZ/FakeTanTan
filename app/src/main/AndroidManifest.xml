@@ -41,6 +41,7 @@
         <activity android:name=".activity.EditProfileActivity" />
         <activity android:name=".activity.AccountActivity" />
         <activity android:name=".activity.ChatActivity" />
+        <activity android:name=".activity.ChatNewActivity" />
         <activity android:name=".activity.RobotActivity" />
         <activity android:name=".activity.RobotNewActivity" />
         <activity

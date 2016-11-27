@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/chat_bar"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -22,7 +23,7 @@
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/iv_back"
         android:layout_marginLeft="40dp"
-        android:src="@drawable/fox"
+        android:src="@drawable/img_defalut"
         app:civ_border_width="1dp"
         app:civ_border_color="@color/color1"/>
 
@@ -35,7 +36,7 @@
         android:layout_alignTop="@+id/iv_avatar"
         android:textColor="@color/colorPrimary"
         android:textSize="@dimen/type2"
-        android:text="老哥"/>
+        tools:text="老哥"/>
 
     <TextView
         android:id="@+id/tv_time"

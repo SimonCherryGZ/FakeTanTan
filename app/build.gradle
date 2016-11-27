@@ -55,6 +55,7 @@ dependencies {
     compile 'com.wdullaer:materialdatetimepicker:2.5.0'
     compile 'com.appyvet:materialrangebar:1.3'
     compile 'in.srain.cube:ultra-ptr:1.0.11'
+    compile 'org.jsoup:jsoup:1.10.1'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
     provided 'com.baoyz.treasure:treasure-compiler:0.7.1'

@@ -2,6 +2,7 @@ package com.simoncherry.faketantan.realm;
 
 import java.util.Date;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -28,6 +29,8 @@ public class ChatMessage extends RealmObject {
     private Date textTime;
 
     private boolean isSend;
+
+    private RealmList<Tutorial> tutorialList;
 
     public long getId() {
         return id;
@@ -91,6 +94,14 @@ public class ChatMessage extends RealmObject {
 
     public void setSend(boolean send) {
         isSend = send;
+    }
+
+    public RealmList<Tutorial> getTutorialList() {
+        return tutorialList;
+    }
+
+    public void setTutorialList(RealmList<Tutorial> tutorialList) {
+        this.tutorialList = tutorialList;
     }
 
     @Override

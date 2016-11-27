@@ -6,6 +6,10 @@ package com.simoncherry.faketantan.utils;
 
 public class TestUtil {
 
+    public final static String TEST_USER_ME = "LaoGe";
+    public final static String TEST_USER_HELPER = "Helper";
+    public final static String TEST_USER_ROBOT = "Robot";
+
     public static String[] Url = {
             "http://oczduo6wo.bkt.clouddn.com/1474986627687face.png",
             "http://oczduo6wo.bkt.clouddn.com/1474986614458face.png",

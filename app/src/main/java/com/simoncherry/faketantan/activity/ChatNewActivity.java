@@ -1,6 +1,7 @@
 package com.simoncherry.faketantan.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -33,13 +34,18 @@ import android.widget.TextView;
 import com.baoyz.treasure.Treasure;
 import com.orhanobut.logger.Logger;
 import com.simoncherry.faketantan.R;
-import com.simoncherry.faketantan.adapter.ChatMessageAdapter;
+import com.simoncherry.faketantan.adapter.ChatMsgNewAdapter;
 import com.simoncherry.faketantan.bean.PhotoItem;
 import com.simoncherry.faketantan.realm.ChatMessage;
 import com.simoncherry.faketantan.realm.ChatMsgManager;
+import com.simoncherry.faketantan.realm.MatchUser;
+import com.simoncherry.faketantan.realm.MatchUserManager;
+import com.simoncherry.faketantan.realm.Tutorial;
 import com.simoncherry.faketantan.sp.UserData;
 import com.simoncherry.faketantan.utils.BitmapUtil;
 import com.simoncherry.faketantan.utils.GaussBlurUtil;
+import com.simoncherry.faketantan.utils.TestUtil;
+import com.simoncherry.faketantan.utils.TutorialUtil;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import com.turing.androidsdk.InitListener;
@@ -78,11 +84,12 @@ import io.github.rockerhieu.emojicon.emoji.Emojicon;
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmConfiguration;
+import io.realm.RealmList;
 import turing.os.http.core.ErrorMessage;
 import turing.os.http.core.HttpConnectionListener;
 import turing.os.http.core.RequestResult;
 
-public class RobotNewActivity extends AppCompatActivity implements
+public class ChatNewActivity extends AppCompatActivity implements
         EmojiconGridFragment.OnEmojiconClickedListener,
         EmojiconsFragment.OnEmojiconBackspaceClickedListener {
 
@@ -90,6 +97,10 @@ public class RobotNewActivity extends AppCompatActivity implements
     RelativeLayout chatBar;
     @BindView(R.id.iv_back)
     ImageView ivBack;
+    @BindView(R.id.iv_avatar)
+    ImageView ivAvatar;
+    @BindView(R.id.tv_nickname)
+    TextView tvNickname;
 
     @BindView(R.id.rv_chat)
     RecyclerView rvChat;
@@ -131,13 +142,14 @@ public class RobotNewActivity extends AppCompatActivity implements
     private Realm realm;
     private RealmChangeListener changeListener;
     private Context mContext;
-    private ChatMessageAdapter mAdapter;
+    private ChatMsgNewAdapter mAdapter;
     private List<ChatMessage> mData;
+    private ChatMsgNewAdapter.TutorialItemListener itemListener;
 
-    private final String TAG = RobotNewActivity.class.getSimpleName();
-    private final static String TEST_USER_1 = "LaoGe";
-    private final static String TEST_USER_2 = "Robot";
+    private final String TAG = ChatNewActivity.class.getSimpleName();
     private int pageIndex = 1;
+    private String conversation = "";
+    private boolean isHelper = true;
 
     private TuringApiManager mTuringApiManager;
     private final String TURING_APIKEY = "ba43961a07e546ed987e2b57473a66dd";
@@ -164,13 +176,20 @@ public class RobotNewActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_robot_new);
         ButterKnife.bind(this);
-        mContext = RobotNewActivity.this;
+        mContext = ChatNewActivity.this;
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if (bundle != null) {
+            conversation = bundle.getString("conversation", "");
+            isHelper = bundle.getBoolean("isHelper", true);
+        }
+        if (!isHelper) {
+            initRobot();
+        }
 
         initView();
-        initBackGround();
         initKPSwitchPanel();
         initRecycleView();
-        initRobot();
 
         initRealm();
         initChatMsgFromRealm();
@@ -184,6 +203,26 @@ public class RobotNewActivity extends AppCompatActivity implements
     }
 
     private void initView() {
+        MatchUser user = MatchUserManager.getInstance().retrieveMatchUserByIdentify(conversation);
+        if (user != null) {
+            String name = user.getName();
+            if (name != null) {
+                tvNickname.setText(name);
+            }
+            String avatarUrl = user.getAvatarUrl();
+            if (avatarUrl != null && !TextUtils.isEmpty(avatarUrl)) {
+                Picasso.with(mContext).load(avatarUrl)
+                        .fit().centerCrop()
+                        .placeholder(R.drawable.img_defalut).error(R.drawable.img_defalut)
+                        .into(ivAvatar);
+                initBackGround(avatarUrl);
+            } else {
+                initBackGround();
+            }
+        } else {
+            initBackGround();
+        }
+
         rvChat.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -218,7 +257,7 @@ public class RobotNewActivity extends AppCompatActivity implements
         ptrFrame.setPtrHandler(new PtrDefaultHandler() {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
-                List<ChatMessage> data = ChatMsgManager.getInstance().retrieveChatMsgByPage(TEST_USER_2, ++pageIndex);
+                List<ChatMessage> data = ChatMsgManager.getInstance().retrieveChatMsgByPage(conversation, ++pageIndex);
                 if (data == null || data.size() == 0) {
                     Logger.t(TAG).e("no more message can load");
                 }
@@ -249,6 +288,19 @@ public class RobotNewActivity extends AppCompatActivity implements
                 Bitmap bitmap = BitmapFactory.decodeFile(path);
                 setBackground(bitmap);
             }
+        }
+    }
+
+    private void initBackGround(String url) {
+        if (URLUtil.isNetworkUrl(url)) {
+            Picasso.with(mContext).load(url)
+                    .resize(300, 300).centerCrop()
+                    .placeholder(R.drawable.img_defalut)
+                    .placeholder(R.drawable.img_defalut)
+                    .into(mTarget);
+        } else if (new File(url).exists()) {
+            Bitmap bitmap = BitmapFactory.decodeFile(url);
+            setBackground(bitmap);
         }
     }
 
@@ -342,7 +394,82 @@ public class RobotNewActivity extends AppCompatActivity implements
     private void initRecycleView() {
         mData = new ArrayList<>();
         rvChat.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
-        rvChat.setAdapter(mAdapter = new ChatMessageAdapter(mContext, mData));
+        rvChat.setAdapter(mAdapter = new ChatMsgNewAdapter(mContext, mData));
+
+        itemListener = new ChatMsgNewAdapter.TutorialItemListener() {
+            @Override
+            public void onClick(int index, String tutorial) {
+                showTutorialByIndex(index, tutorial);
+            }
+        };
+        mAdapter.setTutorialListener(itemListener);
+    }
+
+    private void showDefaultTutorial() {
+        ChatMessage chatMsgBean = new ChatMessage();
+        chatMsgBean.setContent("在瘫瘫遇到问题？点击相应问题，马上得到解答~");
+        chatMsgBean.setSend(false);
+        chatMsgBean.setConversation(TestUtil.TEST_USER_HELPER);
+        chatMsgBean.setTextFrom(TestUtil.TEST_USER_HELPER);
+        chatMsgBean.setTextTo(TestUtil.TEST_USER_ME);
+        chatMsgBean.setName(TestUtil.TEST_USER_HELPER);
+
+        RealmList<Tutorial> tutorialList = new RealmList<>();
+        String[] tutorialArray = TutorialUtil.getTutorialArray(0);
+        for (int i=0; i<tutorialArray.length; i++) {
+            Tutorial bean = new Tutorial();
+            bean.setIndex(i+1);
+            bean.setContent(tutorialArray[i]);
+            tutorialList.add(bean);
+        }
+        if (tutorialList.size() > 0) {
+            chatMsgBean.setTutorialList(tutorialList);
+        }
+        chatMsgBean.setTextTime(new Date());
+        ChatMsgManager.getInstance().createChatMsg(chatMsgBean);
+
+        mData.add(chatMsgBean);
+        mAdapter.notifyDataSetChanged();
+        if (mData != null && mData.size() > 0) {
+            rvChat.smoothScrollToPosition(mData.size() - 1);  // 精华，加上这句就达到了软键盘把聊天界面往上推的效果
+        }
+    }
+
+    private void showTutorialByIndex(int index, String question) {
+        ChatMessage chatMsgBean = new ChatMessage();
+        chatMsgBean.setSend(false);
+        chatMsgBean.setConversation(TestUtil.TEST_USER_HELPER);
+        chatMsgBean.setTextFrom(TestUtil.TEST_USER_HELPER);
+        chatMsgBean.setTextTo(TestUtil.TEST_USER_ME);
+        chatMsgBean.setName(TestUtil.TEST_USER_HELPER);
+
+        String[] tutorialArray = TutorialUtil.getTutorialArray(index);
+        if (tutorialArray.length > 1) {
+            chatMsgBean.setContent(question);
+
+            RealmList<Tutorial> tutorialList = new RealmList<>();
+            for (int i=0; i<tutorialArray.length; i++) {
+                Tutorial bean = new Tutorial();
+                bean.setIndex(index*10 + i+1);
+                bean.setContent(tutorialArray[i]);
+                tutorialList.add(bean);
+            }
+            if (tutorialList.size() > 0) {
+                chatMsgBean.setTutorialList(tutorialList);
+            }
+        } else {
+            chatMsgBean.setContent(tutorialArray[0]);
+        }
+        chatMsgBean.setTextTime(new Date());
+        ChatMsgManager.getInstance().createChatMsg(chatMsgBean);
+
+        if (mData != null) {
+            mData.add(chatMsgBean);
+            mAdapter.notifyDataSetChanged();
+            if (mData.size() > 0) {
+                rvChat.smoothScrollToPosition(mData.size() - 1);  // 精华，加上这句就达到了软键盘把聊天界面往上推的效果
+            }
+        }
     }
 
     private void showRobotResponse(String response) {
@@ -369,7 +496,7 @@ public class RobotNewActivity extends AppCompatActivity implements
             @Override
             public void onComplete() {
                 // 获取userid成功后，才可以请求Turing服务器，需要请求必须在此回调成功，才可正确请求
-                mTuringApiManager = new TuringApiManager(RobotNewActivity.this);
+                mTuringApiManager = new TuringApiManager(ChatNewActivity.this);
                 mTuringApiManager.setHttpListener(myHttpConnectionListener);
             }
         });
@@ -480,7 +607,7 @@ public class RobotNewActivity extends AppCompatActivity implements
 
     private void initRealm() {
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
-                .name(TEST_USER_1)
+                .name(TestUtil.TEST_USER_ME)
                 .deleteRealmIfMigrationNeeded()
                 .build();
         realm = Realm.getInstance(realmConfig);
@@ -495,7 +622,7 @@ public class RobotNewActivity extends AppCompatActivity implements
     }
 
     private void initChatMsgFromRealm() {
-        List<ChatMessage> data = ChatMsgManager.getInstance().retrieveChatMsgByPage(TEST_USER_2, 1);
+        List<ChatMessage> data = ChatMsgManager.getInstance().retrieveChatMsgByPage(conversation, 1);
         if (data != null && data.size() > 0) {
             onInitChatMsgCallBack(data);
         } else {
@@ -536,15 +663,15 @@ public class RobotNewActivity extends AppCompatActivity implements
 
     private ChatMessage packageChatMsg(String msg, boolean isSend) {
         ChatMessage chatMsgBean = new ChatMessage();
-        chatMsgBean.setConversation(TEST_USER_2);
+        chatMsgBean.setConversation(conversation);
         if (isSend) {
-            chatMsgBean.setTextFrom(TEST_USER_1);
-            chatMsgBean.setTextTo(TEST_USER_2);
-            chatMsgBean.setName(TEST_USER_1);
+            chatMsgBean.setTextFrom(TestUtil.TEST_USER_ME);
+            chatMsgBean.setTextTo(conversation);
+            chatMsgBean.setName(TestUtil.TEST_USER_ME);
         } else {
-            chatMsgBean.setTextFrom(TEST_USER_2);
-            chatMsgBean.setTextTo(TEST_USER_1);
-            chatMsgBean.setName(TEST_USER_2);
+            chatMsgBean.setTextFrom(conversation);
+            chatMsgBean.setTextTo(TestUtil.TEST_USER_ME);
+            chatMsgBean.setName(conversation);
         }
         chatMsgBean.setSend(isSend);
         chatMsgBean.setContent(msg);
@@ -616,8 +743,11 @@ public class RobotNewActivity extends AppCompatActivity implements
 
                     edtChat.setText("");
                     tvSend.setVisibility(View.GONE);
-
-                    mTuringApiManager.requestTuringAPI(msg);
+                    if (isHelper) {
+                        showDefaultTutorial();
+                    } else {
+                        mTuringApiManager.requestTuringAPI(msg);
+                    }
                 }
                 break;
             case R.id.btn_speak:

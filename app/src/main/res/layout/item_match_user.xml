@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_root"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:minHeight="80dp"
+    android:background="@android:color/transparent"
+    tools:background="@color/color7"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        app:civ_border_width="0dp"
+        tools:src="@drawable/fox"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/iv_avatar"
+        android:layout_toRightOf="@+id/iv_avatar"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textColor="@color/color1"
+        android:textSize="@dimen/type1"
+        tools:text="瘫瘫小助手"/>
+
+    <TextView
+        android:id="@+id/tv_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/iv_avatar"
+        android:layout_alignLeft="@+id/tv_name"
+        android:layout_marginRight="20dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textColor="@color/color3"
+        android:textSize="@dimen/type2"
+        tools:text="别说了，留卡号吧，闭着眼睛按0，打多打少看缘分"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@+id/tv_name"
+        android:background="@color/color6"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

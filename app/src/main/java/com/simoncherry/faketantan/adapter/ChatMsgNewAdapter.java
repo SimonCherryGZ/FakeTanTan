@@ -2,6 +2,7 @@ package com.simoncherry.faketantan.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,11 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import com.orhanobut.logger.Logger;
 import com.simoncherry.faketantan.R;
 import com.simoncherry.faketantan.bean.PhotoItem;
-import com.simoncherry.faketantan.bean.TutorialBean;
 import com.simoncherry.faketantan.custom.DynamicListView;
 import com.simoncherry.faketantan.realm.ChatMessage;
+import com.simoncherry.faketantan.realm.MatchUser;
+import com.simoncherry.faketantan.realm.MatchUserManager;
+import com.simoncherry.faketantan.realm.Tutorial;
 import com.simoncherry.faketantan.sp.UserData;
 import com.simoncherry.faketantan.utils.RoundedTransformation;
 import com.squareup.picasso.Picasso;
@@ -30,15 +33,15 @@ import io.github.rockerhieu.emojicon.EmojiconTextView;
  * Created by Simon on 2016/11/6.
  */
 
-public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ChatMsgNewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private final static String TAG = ChatMessageAdapter.class.getSimpleName();
+    private final static String TAG = ChatMsgNewAdapter.class.getSimpleName();
     private final static int TYPE_SEND = 0;
     private final static int TYPE_RECEIVE = 1;
 
     private Context mContext;
     private List<ChatMessage> mData;
-    private TutorialAdapter.TutorialBtnListener btnListener;
+    private TutorialNewAdapter.TutorialBtnListener btnListener;
 
     public interface TutorialItemListener {
         void onClick(int index, String tutorial);
@@ -50,7 +53,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         tutorialItemListener = listener;
     }
 
-    public ChatMessageAdapter(Context mContext, List<ChatMessage> mData) {
+    public ChatMsgNewAdapter(Context mContext, List<ChatMessage> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -115,36 +118,47 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 receiveViewHolder.ivImg.setVisibility(View.GONE);
             }
 
+            MatchUser user = MatchUserManager.getInstance().retrieveMatchUserByIdentify(chatMsgBean.getConversation());
+            if (user != null) {
+                String avatarUrl = user.getAvatarUrl();
+                if (avatarUrl != null && !TextUtils.isEmpty(avatarUrl)) {
+                    Picasso.with(mContext)
+                            .load(avatarUrl)
+                            .fit().centerCrop()
+                            .placeholder(R.drawable.img_defalut).error(R.drawable.img_defalut)
+                            .into(receiveViewHolder.ivAvatar);
+                }
+            }
+
             receiveViewHolder.tutorialData = new ArrayList<>();
-            receiveViewHolder.tutorialAdapter = new TutorialAdapter(mContext, receiveViewHolder.tutorialData);
+            receiveViewHolder.tutorialAdapter = new TutorialNewAdapter(mContext, receiveViewHolder.tutorialData);
             receiveViewHolder.lvTutorial.setAdapter(receiveViewHolder.tutorialAdapter);
 
-            btnListener = new TutorialAdapter.TutorialBtnListener() {
+            btnListener = new TutorialNewAdapter.TutorialBtnListener() {
                 @Override
                 public void onCLick(int index) {
                     if (receiveViewHolder.tutorialData != null && receiveViewHolder.tutorialData.size() > (index%10-1)) {
-                        TutorialBean bean = receiveViewHolder.tutorialData.get(index%10-1);
+                        Tutorial bean = receiveViewHolder.tutorialData.get(index%10-1);
                         tutorialItemListener.onClick(index, bean.getContent());
                     }
                 }
             };
             receiveViewHolder.tutorialAdapter.setTutorialBtnListener(btnListener);
 
-            //setMockTutorial(receiveViewHolder.tutorialData, receiveViewHolder.tutorialAdapter);
-//            List<TutorialBean> tutorialBeanList = chatMsgBean.getTutorialList();
-//            if (tutorialBeanList == null || tutorialBeanList.size() == 0) {
-//                receiveViewHolder.lvTutorial.setVisibility(View.GONE);
-//            } else {
-//                receiveViewHolder.lvTutorial.setVisibility(View.VISIBLE);
-//                if (receiveViewHolder.tutorialData != null) {
-//                    if (receiveViewHolder.tutorialData.size() > 0) {
-//                        receiveViewHolder.tutorialData.clear();
-//                    }
-//                    receiveViewHolder.tutorialData.addAll(tutorialBeanList);
-//                    receiveViewHolder.tutorialAdapter.notifyDataSetChanged();
-//                }
-//            }
-            receiveViewHolder.lvTutorial.setVisibility(View.GONE);
+            List<Tutorial> tutorialList = chatMsgBean.getTutorialList();
+            if (tutorialList == null || tutorialList.size() == 0) {
+                Logger.t(TAG).e("getTutorialList: null");
+                receiveViewHolder.lvTutorial.setVisibility(View.GONE);
+            } else {
+                receiveViewHolder.lvTutorial.setVisibility(View.VISIBLE);
+                if (receiveViewHolder.tutorialData != null) {
+                    if (receiveViewHolder.tutorialData.size() > 0) {
+                        receiveViewHolder.tutorialData.clear();
+                    }
+                    receiveViewHolder.tutorialData.addAll(tutorialList);
+                    receiveViewHolder.tutorialAdapter.notifyDataSetChanged();
+                }
+            }
         }
     }
 
@@ -176,16 +190,6 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-    private void setMockTutorial(List<TutorialBean> data, TutorialAdapter adapter) {
-        for (int i=0; i<6; i++) {
-            TutorialBean bean = new TutorialBean();
-            bean.setId(i);
-            bean.setContent(String.valueOf(i+1) + ".啦啦啦啦啦啦啦啦啦");
-            data.add(bean);
-        }
-        adapter.notifyDataSetChanged();
-    }
-
     private class SendViewHolder extends RecyclerView.ViewHolder {
 
         EmojiconTextView tvContent;
@@ -204,8 +208,8 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         ImageView ivImg;
         CircularImageView ivAvatar;
         DynamicListView lvTutorial;
-        TutorialAdapter tutorialAdapter;
-        List<TutorialBean> tutorialData;
+        TutorialNewAdapter tutorialAdapter;
+        List<Tutorial> tutorialData;
 
         ReceiveViewHolder(View view) {
             super(view);
