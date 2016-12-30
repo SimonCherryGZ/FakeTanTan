@@ -266,7 +266,7 @@ public class OtherProfileActivity extends Activity implements ScrollViewListener
         tvFrom.setText(MockData.comeFrom[which]);
         tvJob.setText(MockData.job[which]);
         tvSign.setText(MockData.sign[which]);
-        layoutTag.setTags(MockData.tags[which]);
+        layoutTag.setTags(MockData.my_tags[which]);
     }
 
     private IndicatorViewPager.IndicatorViewPagerAdapter adapter = new IndicatorViewPager.IndicatorViewPagerAdapter() {

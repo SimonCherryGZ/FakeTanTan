@@ -448,27 +448,27 @@ public class UserProfileFragment extends Fragment implements ScrollViewListener 
             layoutTravel.setVisibility(View.GONE);
         }
 
-//        List<String> tags = new ArrayList<>();
-//        Collections.addAll(tags, TestUtil.tagSign);
-//        layoutTagSign.setTags(tags);
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagSport);
-//        layoutTagSport.setTags(tags);
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagMusic);
-//        layoutTagMusic.setTags(tags);
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagFood);
-//        layoutTagFood.setTags(tags);
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagMovie);
-//        layoutTagMovie.setTags(tags);
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagBook);
-//        layoutTagBook.setTags(tags);
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagTravel);
-//        layoutTagTravel.setTags(tags);
+//        List<String> my_tags = new ArrayList<>();
+//        Collections.addAll(my_tags, TestUtil.tagSign);
+//        layoutTagSign.setTags(my_tags);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagSport);
+//        layoutTagSport.setTags(my_tags);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagMusic);
+//        layoutTagMusic.setTags(my_tags);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagFood);
+//        layoutTagFood.setTags(my_tags);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagMovie);
+//        layoutTagMovie.setTags(my_tags);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagBook);
+//        layoutTagBook.setTags(my_tags);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagTravel);
+//        layoutTagTravel.setTags(my_tags);
 
 //        userData.setNickName("老哥");
 //        userData.setIndustry("钱少加班多的行业");
@@ -478,32 +478,32 @@ public class UserProfileFragment extends Fragment implements ScrollViewListener 
 //        userData.setMarker("自宅");
 //        userData.setSign("Read Fucking Source Code");
 
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagSignTest);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagSignTest);
 //        userData.setTagSign(null);
 //
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagSport);
-//        userData.setTagSport(tags);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagSport);
+//        userData.setTagSport(my_tags);
 //
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagMusic);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagMusic);
 //        userData.setTagMusic(null);
 //
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagFood);
-//        userData.setTagFood(tags);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagFood);
+//        userData.setTagFood(my_tags);
 //
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagMovie);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagMovie);
 //        userData.setTagMovie(null);
 //
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagBook);
-//        userData.setTagBook(tags);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagBook);
+//        userData.setTagBook(my_tags);
 //
-//        tags.clear();
-//        Collections.addAll(tags, TestUtil.tagTravel);
+//        my_tags.clear();
+//        Collections.addAll(my_tags, TestUtil.tagTravel);
 //        userData.setTagTravel(null);
     }
 

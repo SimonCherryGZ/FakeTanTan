@@ -47,6 +47,7 @@
         <activity
             android:name="com.learnncode.mediachooser.activity.HomeScreenMediaChooser"
             android:screenOrientation="portrait" />
+        <activity android:name=".activity.OtherProfileNewActivity"></activity>
     </application>
 
 </manifest>
