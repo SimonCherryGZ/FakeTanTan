@@ -7,6 +7,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -23,7 +24,7 @@ import android.widget.TextView;
 
 import com.kogitune.activity_transition.ActivityTransition;
 import com.kogitune.activity_transition.ExitActivityTransition;
-import com.shizhefei.view.indicator.Indicator;
+import com.shizhefei.view.indicator.FixedIndicatorView;
 import com.shizhefei.view.indicator.IndicatorViewPager;
 import com.shizhefei.view.viewpager.RecyclingPagerAdapter;
 import com.simoncherry.faketantan.R;
@@ -39,36 +40,155 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import co.lujun.androidtagview.TagContainerLayout;
 
-public class OtherProfileActivity extends Activity implements ScrollViewListener {
+public class OtherProfileActivity extends AppCompatActivity implements ScrollViewListener {
 
-    public final static int REQUEST_CODE = 1024;
+    @BindView(R.id.layout_global_title)
+    LinearLayout globalTitle;
+    @BindView(R.id.status_bar)
+    View statusBar;
+    @BindView(R.id.icon_slidingmenu_left)
+    ImageView iconSlidingmenuLeft;
+    @BindView(R.id.tv_title_middle)
+    TextView tvTitleMiddle;
+    @BindView(R.id.icon_slidingmenu_right)
+    ImageView iconSlidingmenuRight;
+    @BindView(R.id.iv_avatar)
+    ImageView ivAvatar;
+    @BindView(R.id.banner_viewPager)
+    ViewPager bannerViewPager;
+    @BindView(R.id.banner_indicator)
+    FixedIndicatorView bannerIndicator;
+    @BindView(R.id.layout_gallery)
+    FrameLayout layoutGallery;
+    @BindView(R.id.view_blank)
+    View viewBlank;
+    @BindView(R.id.tv_nickname)
+    TextView tvNickname;
+    @BindView(R.id.iv_sex)
+    ImageView ivSex;
+    @BindView(R.id.tv_age)
+    TextView tvAge;
+    @BindView(R.id.layout_age)
+    LinearLayout layoutAge;
+    @BindView(R.id.tv_star)
+    TextView tvStar;
+    @BindView(R.id.tv_status)
+    TextView tvStatus;
+    @BindView(R.id.layout_user_base)
+    RelativeLayout layoutUserBase;
+    @BindView(R.id.iv_heart)
+    ImageView ivHeart;
+    @BindView(R.id.tv_like_count)
+    TextView tvLikeCount;
+    @BindView(R.id.tv_flaunt)
+    TextView tvFlaunt;
+    @BindView(R.id.layout_like_count)
+    RelativeLayout layoutLikeCount;
+    @BindView(R.id.tv_my_info)
+    TextView tvMyInfo;
+    @BindView(R.id.iv_industry)
+    ImageView ivIndustry;
+    @BindView(R.id.tv_industry)
+    TextView tvIndustry;
+    @BindView(R.id.layout_industry)
+    RelativeLayout layoutIndustry;
+    @BindView(R.id.iv_job)
+    ImageView ivJob;
+    @BindView(R.id.tv_job)
+    TextView tvJob;
+    @BindView(R.id.layout_job)
+    RelativeLayout layoutJob;
+    @BindView(R.id.iv_company)
+    ImageView ivCompany;
+    @BindView(R.id.tv_company)
+    TextView tvCompany;
+    @BindView(R.id.layout_company)
+    RelativeLayout layoutCompany;
+    @BindView(R.id.iv_from)
+    ImageView ivFrom;
+    @BindView(R.id.tv_from)
+    TextView tvFrom;
+    @BindView(R.id.layout_from)
+    RelativeLayout layoutFrom;
+    @BindView(R.id.iv_marker)
+    ImageView ivMarker;
+    @BindView(R.id.tv_marker)
+    TextView tvMarker;
+    @BindView(R.id.layout_marker)
+    RelativeLayout layoutMarker;
+    @BindView(R.id.iv_sign)
+    ImageView ivSign;
+    @BindView(R.id.tv_sign)
+    TextView tvSign;
+    @BindView(R.id.layout_sign)
+    RelativeLayout layoutSign;
+    @BindView(R.id.layout_my_info)
+    RelativeLayout layoutMyInfo;
+    @BindView(R.id.tv_my_tag)
+    TextView tvMyTag;
+    @BindView(R.id.iv_tag)
+    TextView ivTag;
+    @BindView(R.id.layout_tag_sign)
+    TagContainerLayout layoutTagSign;
+    @BindView(R.id.layout_my_tag)
+    RelativeLayout layoutMyTag;
+    @BindView(R.id.tv_my_interest)
+    TextView tvMyInterest;
+    @BindView(R.id.iv_sport)
+    ImageView ivSport;
+    @BindView(R.id.layout_tag_sport)
+    TagContainerLayout layoutTagSport;
+    @BindView(R.id.layout_sport)
+    RelativeLayout layoutSport;
+    @BindView(R.id.iv_music)
+    ImageView ivMusic;
+    @BindView(R.id.layout_tag_music)
+    TagContainerLayout layoutTagMusic;
+    @BindView(R.id.layout_music)
+    RelativeLayout layoutMusic;
+    @BindView(R.id.iv_food)
+    ImageView ivFood;
+    @BindView(R.id.layout_tag_food)
+    TagContainerLayout layoutTagFood;
+    @BindView(R.id.layout_food)
+    RelativeLayout layoutFood;
+    @BindView(R.id.iv_movie)
+    ImageView ivMovie;
+    @BindView(R.id.layout_tag_movie)
+    TagContainerLayout layoutTagMovie;
+    @BindView(R.id.layout_movie)
+    RelativeLayout layoutMovie;
+    @BindView(R.id.iv_book)
+    ImageView ivBook;
+    @BindView(R.id.layout_tag_book)
+    TagContainerLayout layoutTagBook;
+    @BindView(R.id.layout_book)
+    RelativeLayout layoutBook;
+    @BindView(R.id.iv_travel)
+    ImageView ivTravel;
+    @BindView(R.id.layout_tag_travel)
+    TagContainerLayout layoutTagTravel;
+    @BindView(R.id.layout_travel)
+    RelativeLayout layoutTravel;
+    @BindView(R.id.layout_my_interest)
+    RelativeLayout layoutMyInterest;
+    @BindView(R.id.layout_profile)
+    RelativeLayout layoutProfile;
+    @BindView(R.id.scrollView)
+    ObservableScrollView scrollView;
+    @BindView(R.id.activity_other_profile_new)
+    RelativeLayout activityOtherProfileNew;
+
 
     private Context mContext;
     private ExitActivityTransition exitTransition;
-
-    private LinearLayout globalTitle;
-    private FrameLayout layoutGallery;
-    private ImageView ivAvatar;
-    private ViewPager viewPager;
-    private Indicator indicator;
     private IndicatorViewPager indicatorViewPager;
 
-    private ObservableScrollView scrollView;
-    private LinearLayout layoutProfile;
-    private TextView tvNickName;
-    private ImageView ivSex;
-    private TextView tvIdentify;
-    private TextView tvBirthDay;
-    private TextView tvConstellation;
-    private ImageView ivConstellation;
-    private TextView tvFrom;
-    private TextView tvJob;
-    private TextView tvSign;
-    private TagContainerLayout layoutTag;
-    private View viewBlank;
-
+    public final static int REQUEST_CODE = 1024;
     private List<String> urlList;
     private int img_index = 0;
     private int img_page = 0;
@@ -81,38 +201,24 @@ public class OtherProfileActivity extends Activity implements ScrollViewListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_other_profile);
+        ButterKnife.bind(this);
         mContext = OtherProfileActivity.this;
 
-        globalTitle = (LinearLayout) findViewById(R.id.layout_global_title);
-        scrollView = (ObservableScrollView) findViewById(R.id.scrollView);
-        ivAvatar = (ImageView) findViewById(R.id.iv_avatar);
-        layoutGallery = (FrameLayout) findViewById(R.id.layout_gallery);
-        layoutProfile = (LinearLayout) findViewById(R.id.layout_profile);
-        viewPager = (ViewPager) findViewById(R.id.banner_viewPager);
-        indicator = (Indicator) findViewById(R.id.banner_indicator);
-        tvNickName = (TextView) findViewById(R.id.tv_nickname);
-        ivSex = (ImageView) findViewById(R.id.iv_sex);
-        tvIdentify = (TextView) findViewById(R.id.tv_id);
-        tvBirthDay = (TextView) findViewById(R.id.tv_birthday);
-        tvConstellation = (TextView) findViewById(R.id.tv_constellation);
-        ivConstellation = (ImageView) findViewById(R.id.iv_constellation);
-        tvFrom = (TextView) findViewById(R.id.tv_from);
-        tvJob = (TextView) findViewById(R.id.tv_job);
-        tvSign = (TextView) findViewById(R.id.tv_sign);
-        layoutTag = (TagContainerLayout) findViewById(R.id.layout_tag);
-        viewBlank = (View) findViewById(R.id.view_blank);
+        initView(savedInstanceState);
+    }
 
+    private void initView(Bundle savedInstanceState) {
         Resources resources = this.getResources();
         DisplayMetrics dm = resources.getDisplayMetrics();
         int screenWidth = dm.widthPixels;
 
-        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)layoutGallery.getLayoutParams();
+        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) layoutGallery.getLayoutParams();
         lp.width = screenWidth;
         lp.height = screenWidth;
         lp.addRule(RelativeLayout.BELOW, globalTitle.getId());
         layoutGallery.setLayoutParams(lp);
         // viewBlank.setLayoutParams(lp);  // TODO 这句导致layoutGallery的位置出错
-        RelativeLayout.LayoutParams lp2 = (RelativeLayout.LayoutParams)viewBlank.getLayoutParams();
+        RelativeLayout.LayoutParams lp2 = (RelativeLayout.LayoutParams) viewBlank.getLayoutParams();
         lp2.width = screenWidth;
         lp2.height = screenWidth;
         viewBlank.setLayoutParams(lp2);
@@ -132,12 +238,12 @@ public class OtherProfileActivity extends Activity implements ScrollViewListener
                 .centerCrop()
                 .into(ivAvatar);
 
-        viewPager.setOffscreenPageLimit(2);
-        indicatorViewPager = new IndicatorViewPager(indicator, viewPager);
+        bannerViewPager.setOffscreenPageLimit(2);
+        indicatorViewPager = new IndicatorViewPager(bannerIndicator, bannerViewPager);
         indicatorViewPager.setAdapter(adapter);
 
         initMockData(img_index);
-        viewPager.setCurrentItem(img_page);
+        bannerViewPager.setCurrentItem(img_page);
         img_url = urlList.get(img_page);
 
         exitTransition = ActivityTransition.with(getIntent()).to(layoutGallery).duration(300).start(savedInstanceState);
@@ -150,10 +256,12 @@ public class OtherProfileActivity extends Activity implements ScrollViewListener
                     public void onAnimationStart(Animation animation) {
                         layoutProfile.setVisibility(View.VISIBLE);
                     }
+
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         //ivAvatar.setVisibility(View.GONE);
                     }
+
                     @Override
                     public void onAnimationRepeat(Animation animation) {
                     }
@@ -162,23 +270,11 @@ public class OtherProfileActivity extends Activity implements ScrollViewListener
             }
         }, 50);
 
-        initView();
+        initGallery();
     }
 
-    private void initView() {
-//        Resources resources = this.getResources();
-//        DisplayMetrics dm = resources.getDisplayMetrics();
-//        int screenWidth = dm.widthPixels;
-//        //Logger.e("get Screen Width", String.valueOf(screenWidth));
-//
-//        RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams)layoutGallery.getLayoutParams();
-//        lp.width = screenWidth;
-//        lp.height = screenWidth;
-//        lp.addRule(RelativeLayout.BELOW, globalTitle.getId());
-//        //layoutGallery.setLayoutParams(lp);
-//        viewBlank.setLayoutParams(lp);
-
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+    private void initGallery() {
+        bannerViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             }
@@ -213,7 +309,7 @@ public class OtherProfileActivity extends Activity implements ScrollViewListener
 
                 scrollView.onTouchEvent(event);
                 if (!isContain(layoutProfile, event.getRawX(), event.getRawY())) {  // 精华：判断触摸的坐标不在layoutProfile范围内，则将MotionEvent赋值给ViewPager
-                    viewPager.onTouchEvent(event);
+                    bannerViewPager.onTouchEvent(event);
                 }
                 return true;
             }
@@ -245,28 +341,43 @@ public class OtherProfileActivity extends Activity implements ScrollViewListener
         return false;
     }
 
+    private void initMockData(int which) {
+        initMockImage(which);
+        which = which % 4;
+        tvNickname.setText(MockData.nickName[which]);
+        layoutAge.setBackgroundResource(R.drawable.bg_tv_age_female);
+        tvAge.setText(MockData.age[which]);
+        ivSex.setImageResource(R.drawable.ic_female);
+        tvStar.setText(MockData.constellation[which]);
+        tvLikeCount.setText(String.valueOf(MockData.likeCount[which]));
+        tvIndustry.setText(MockData.industry[which]);
+        tvJob.setText(MockData.job[which]);
+        layoutCompany.setVisibility(View.GONE);
+        tvFrom.setText(MockData.comeFrom[which]);
+        layoutMarker.setVisibility(View.GONE);
+        tvSign.setText(MockData.sign[which]);
+        layoutTagSign.setTags(MockData.my_tags[which]);
+        layoutTagSport.setTags(MockData.sport_tags[which]);
+        layoutTagMusic.setTags(MockData.music_tags[which]);
+        layoutTagFood.setTags(MockData.food_tags[which]);
+        layoutTagMovie.setTags(MockData.movie_tags[which]);
+        layoutTagBook.setTags(MockData.book_tags[which]);
+        layoutTagTravel.setTags(MockData.travel_tags[which]);
+    }
+
     private void initMockImage(int which) {
         urlList = new ArrayList<>();
-        for (int i=0; i<4; i++) {
+        for (int i = 0; i < 4; i++) {
             //urlList.add(MockData.avatarUrl[which*4 + i]);
-            urlList.add(TestUtil.Url[which*4 + i]);
+            urlList.add(TestUtil.Url[which * 4 + i]);
         }
         adapter.notifyDataSetChanged();
     }
 
-    private void initMockData(int which) {
-        initMockImage(which);
-        which = which%4;
-        tvNickName.setText(MockData.nickName[which]);
-        ivSex.setImageResource(R.drawable.imformation_sex_female);
-        tvIdentify.setText(MockData.ID[which]);
-        tvBirthDay.setText(MockData.birthDay[which]);
-        tvConstellation.setText(MockData.constellation[which]);
-        ivConstellation.setImageResource(MockData.starResId[which]);
-        tvFrom.setText(MockData.comeFrom[which]);
-        tvJob.setText(MockData.job[which]);
-        tvSign.setText(MockData.sign[which]);
-        layoutTag.setTags(MockData.my_tags[which]);
+    @Override
+    public void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy) {
+        //Logger.t("onScrollChanged y").e(String.valueOf(y));
+        layoutGallery.scrollTo(x, y/2);
     }
 
     private IndicatorViewPager.IndicatorViewPagerAdapter adapter = new IndicatorViewPager.IndicatorViewPagerAdapter() {
@@ -321,12 +432,6 @@ public class OtherProfileActivity extends Activity implements ScrollViewListener
     };
 
     @Override
-    public void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy) {
-        //Logger.t("onScrollChanged y").e(String.valueOf(y));
-        layoutGallery.scrollTo(x, y/2);
-    }
-
-    @Override
     public void onBackPressed() {
         scrollView.fullScroll(ScrollView.FOCUS_UP);
 
@@ -338,6 +443,7 @@ public class OtherProfileActivity extends Activity implements ScrollViewListener
         intent.putExtras(bundle);
         setResult(Activity.RESULT_OK, intent);
 
+        layoutProfile.setVisibility(View.GONE);
         exitTransition.exit(this);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.push_bottom_out);
         animation.setFillAfter(true);

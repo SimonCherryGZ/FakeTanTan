@@ -20,7 +20,6 @@ import com.orhanobut.logger.Logger;
 import com.simoncherry.faketantan.R;
 import com.simoncherry.faketantan.activity.MainActivity;
 import com.simoncherry.faketantan.activity.OtherProfileActivity;
-import com.simoncherry.faketantan.activity.OtherProfileNewActivity;
 import com.simoncherry.faketantan.event.ChangePhotoEvent;
 import com.simoncherry.faketantan.utils.TestUtil;
 
@@ -125,13 +124,13 @@ public class CardFragment extends Fragment {
                 img_index = index;
                 Log.d("CardFragment", "卡片点击-" + dataList.get(index).userName);
 
-                Intent intent = new Intent(getActivity(), OtherProfileNewActivity.class);
+                Intent intent = new Intent(getActivity(), OtherProfileActivity.class);
                 Bundle transitionBundle = ActivityTransitionLauncher.with(getActivity()).from(cardView).createBundle();
                 transitionBundle.putString("img_url", dataList.get(index).imagePath);
                 transitionBundle.putInt("img_index", index);
                 transitionBundle.putInt("img_page", img_page);
                 intent.putExtras(transitionBundle);
-                startActivityForResult(intent, OtherProfileNewActivity.REQUEST_CODE);
+                startActivityForResult(intent, OtherProfileActivity.REQUEST_CODE);
                 // you should prevent default activity transition animation
                 getActivity().overridePendingTransition(0, 0);
             }

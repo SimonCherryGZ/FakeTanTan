@@ -33,9 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.OtherProfileActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".activity.ContactActivity" />
         <activity android:name=".activity.UserProfileActivity" />
         <activity android:name=".activity.EditProfileActivity" />
@@ -47,7 +44,7 @@
         <activity
             android:name="com.learnncode.mediachooser.activity.HomeScreenMediaChooser"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.OtherProfileNewActivity"></activity>
+        <activity android:name=".activity.OtherProfileActivity"></activity>
     </application>
 
 </manifest>

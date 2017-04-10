@@ -71,6 +71,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/btn_register"
         android:layout_marginTop="20dp"
-        android:text="渠道标识：null"/>
+        android:text="渠道标识：null"
+        android:visibility="gone"/>
 
 </RelativeLayout>
